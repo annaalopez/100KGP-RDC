@@ -306,7 +306,7 @@ write.csv(unsolved_comphet_missense, "unsolved_comphet_missense.csv")
 # LOF + MISSENSE #
 #################
 
-LOF_missense <- filter(unsolved_tiering_data_unaffected, consequence_type %in% c("NMD_transcript_variant","feature_truncation","frameshift_variant", "inframe_deletion", "inframe_insertion", "missense_variant", "splice_acceptor_variant", "splice_donor_variant", "splice_region_variant", "start_lost", "stop_gained", "stop_lost"))
+LOF_missense <- filter(unsolved_tiering_data_unaffected, consequence_type %in% c("feature_truncation","frameshift_variant", "inframe_deletion", "inframe_insertion", "missense_variant", "splice_acceptor_variant", "splice_donor_variant", "splice_region_variant", "start_lost", "stop_gained", "stop_lost"))
 
 # Simple recessive LOF + missense
 unsolved_recessive_LOFmissense <- (LOF_missense %>% filter(LOF_missense[15] == 'SimpleRecessive'))
@@ -729,7 +729,7 @@ table(unsolved_tiering_data_affected_father[14])
 monoallelic_father <- filter(unsolved_tiering_data_affected_father, mode_of_inheritance %in% c("monoallelic_not_imprinted", "xlinked_monoallelic"))
 
 # Father LOF
-LOF_father <- filter(monoallelic_father, consequence_type %in% c("NMD_transcript_variant","feature_truncation","frameshift_variant", "splice_acceptor_variant","splice_donor_variant","splice_region_variant","start_lost"))
+LOF_father <- filter(monoallelic_father, consequence_type %in% c("feature_truncation","frameshift_variant", "splice_acceptor_variant","splice_donor_variant","splice_region_variant","start_lost"))
 
 # Remove duplicates based on participant_id, position, reference, alternate,phenotype and consequence type
 LOF_father <- LOF_father[!duplicated(LOF_father[c(1,6,10,11,12,20)]),]
@@ -790,7 +790,7 @@ monoallelic_mother <- filter(unsolved_tiering_data_affected_mother, mode_of_inhe
 monoallelic_mother <- filter(monoallelic_mother, monoallelic_mother[15] != "deNovo")
 
 # Mother LOF
-LOF_mother <- filter(monoallelic_mother, consequence_type %in% c("NMD_transcript_variant","feature_truncation","frameshift_variant", "splice_acceptor_variant","splice_donor_variant","splice_region_variant","start_lost"))
+LOF_mother <- filter(monoallelic_mother, consequence_type %in% c("feature_truncation","frameshift_variant", "splice_acceptor_variant","splice_donor_variant","splice_region_variant","start_lost"))
 
 # Remove duplicates based on participant_id, position, reference, alternate,phenotype and consequence type
 LOF_mother <- LOF_mother[!duplicated(LOF_mother[c(1,6,10,11,12,20)]),]
